@@ -1,11 +1,8 @@
-import { products } from "@/data/asyncMock";
 import { NextResponse } from "next/server";
-
-const sleep = (timer) => {
-    return new Promise((resolve) => setTimeout(resolve, timer));
-}
+import { collection } from "firebase/firestore";
+import { db } from "@/app/config/firebaseConfig";
 
 export async function GET(request) {
-    await sleep(1000);
-    return NextResponse.json(products);
+    const productsRef = collection(db, 'productos')
+    return NextResponse.json(productsRef)
 }

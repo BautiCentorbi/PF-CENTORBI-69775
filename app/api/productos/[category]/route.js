@@ -1,20 +1,17 @@
-import { products } from "@/data/asyncMock";
 import { NextResponse } from "next/server";
-
-const sleep = (timer) => {
-    return new Promise((resolve) => setTimeout(resolve, timer));
-}
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "@/app/config/firebaseConfig";
 
 export async function GET(request, { params }) {
     const { category } = params;
-    const data =
-        category === 'all'
-            ? products
-            : products.filter(
-                product => product.category.toLowerCase() === category.toLowerCase()
-            );
-    await sleep(1000);
-    console.log(data)
-    return NextResponse.json(data);
     
+    const productsRef = collection(db, 'productos')
+
+    const q = !category ? productsRef : query(productsRef.where('type', '==', category))
+    
+    const querySnapshot = await getDocs(q)
+
+    const docs = querySnapshot.docs.map(doc => doc.data())
+
+    return NextResponse.json(docs)
 }

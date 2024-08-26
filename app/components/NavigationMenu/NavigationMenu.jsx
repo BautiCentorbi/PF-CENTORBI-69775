@@ -1,25 +1,33 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { products } from "@/data/asyncMock";
-import { usePathname } from "next/navigation";
+'use client'
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { db } from '@/app/config/firebaseConfig';
+import { getDocs, collection } from 'firebase/firestore';
+import { usePathname } from 'next/navigation';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
-function totalCategories(data) {
-  const categories = data.map((item) => item.category);
-  return [...new Set(categories)];
-}
-
 const NavigationMenu = () => {
-  const categories = totalCategories(products);
-
+  const { pathname } = usePathname()
+  const [ categories, setCategories ] = useState([])
   const [toggleOpen, setToggleOpen] = useState(false);
 
-  const pathname = usePathname();
+  useEffect(() => {
+    const loadCategories = async() => {
+      const fetchedCategories = await fetchCategories()
+      setCategories(fetchedCategories)
+    }
+    loadCategories()
+  }, [])
 
-    useEffect(() => {
-        setToggleOpen(false)
-    }, [pathname])
+  useEffect(() => {
+    setToggleOpen(false)
+  }, [pathname])
+
+  const fetchCategories = async () => {
+    const querySnapshot = await getDocs(collection(db, 'productos'))
+    const categories = querySnapshot.docs.map(doc => doc.data().category)
+    return[...new Set(categories)]
+  }
 
   return (
     <div className="mt-4 mb-8">
