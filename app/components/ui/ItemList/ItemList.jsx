@@ -1,9 +1,7 @@
 import React from 'react';
 import Item from '../Item/Item';
-import { db } from '@/app/config/firebaseConfig';
 
 const ItemList = ({ productos} ) => {
-  console.log(db)
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-center align-center'>
       {productos.map((el, index) => (

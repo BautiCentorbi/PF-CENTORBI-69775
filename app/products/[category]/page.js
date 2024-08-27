@@ -1,6 +1,22 @@
 import React from 'react'
 import ItemList from '@/app/components/ui/ItemList/ItemList'
 
+export async function generateMetadata({params, searchParams}, parent) {
+    return {
+        title: `NextCurs - ${params.category}`,
+        keywords: 'ux-ui, design, user-experience, user-interface, course',
+    }
+}
+
+export function generateStaticParams () {
+    return [
+        {category: 'ux-ui-design'},
+        {category: 'web-development'},
+        {category: 'backend-development'},
+        {category: 'machine-learning'},
+    ]
+}
+
 const getProducts = async(category) => {
     const data = await fetch(`http://localhost:3000/api/productos/${category}`)
     const productos = await data.json()
