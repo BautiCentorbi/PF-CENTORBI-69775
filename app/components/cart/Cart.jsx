@@ -46,7 +46,7 @@ const Cart = () => {
           {cart.map((prod) => {
             console.log(prod);
             return (
-              <div className="bg-background-dark rounded-lg grid grid-cols- md:grid-cols-4 h-fit items-center justify-items-center px-4 my-2 md:my-4">
+              <div className="bg-background-transparent border-b-2 dark:border-0 dark:bg-background-dark rounded-lg grid grid-cols- md:grid-cols-4 h-fit items-center justify-items-center px-4 my-2 md:my-4">
                 <picture className="m-4">
                   <Image
                     src={prod.img}
@@ -64,7 +64,7 @@ const Cart = () => {
             );
           })}
         </div>
-        <div className="bg-background-dark rounded-lg flex flex-col h-fit px-4 md:px-8 py-4 md:py-8 items-center justify-items-center gap-4">
+        <div className="bg-background-light dark:bg-background-dark rounded-lg flex flex-col h-fit px-4 md:px-8 py-4 md:py-8 items-center justify-items-center gap-4">
           <h2 className="text-2xl md:text-4xl">Resumen de Compra</h2>
           <h3 className="text-lg md:text-xl">
             Cantidad de productos: {getQuantity()}

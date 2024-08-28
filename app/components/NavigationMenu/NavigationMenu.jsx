@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 
 const NavigationMenu = () => {
-  const { pathname } = usePathname()
+  const pathname  = usePathname()
   const [ categories, setCategories ] = useState([])
   const [toggleOpen, setToggleOpen] = useState(false);
 
@@ -98,7 +98,8 @@ const NavigationMenu = () => {
           <Link href="/products">Todos</Link>
         </li>
         {categories.map((category, index) => {
-          const categoryPath = `/products/${category.toLowerCase()}`;
+          const categoryPath = `/products/${category}`;
+          console.log(categoryPath)
           return (
             <li
               key={index}
