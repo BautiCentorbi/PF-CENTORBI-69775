@@ -13,7 +13,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
-console.log('Conectando a Firebase')
 
 // products.forEach(async (prod) => {
 //   addDoc(collection(db, 'productos'), prod)

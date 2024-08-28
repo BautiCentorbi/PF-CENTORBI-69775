@@ -12,8 +12,6 @@ const StockCounter = ({stock, initialValue, onAdd, }) => {
     count > initialValue && setCount(count - 1)
   }
   
-  console.log(count)
-
     return (
     <div className='flex flex-col'>
       {

@@ -99,7 +99,6 @@ const NavigationMenu = () => {
         </li>
         {categories.map((category, index) => {
           const categoryPath = `/products/${category}`;
-          console.log(categoryPath)
           return (
             <li
               key={index}
