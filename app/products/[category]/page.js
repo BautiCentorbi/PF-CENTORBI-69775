@@ -3,8 +3,7 @@ import ItemList from '@/app/components/ui/ItemList/ItemList'
 
 export async function generateMetadata({params, searchParams}, parent) {
     return {
-        title: `NextCurs - ${params.category}`,
-        keywords: 'ux-ui, design, user-experience, user-interface, course',
+        title: `NextCurs - ${params.category.replaceAll("-", " ").toUpperCase()}`,
     }
 }
 

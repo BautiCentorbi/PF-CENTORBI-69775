@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-// import { priceConverter } from "@/data/asyncMock";
+import useCostTransform from "@/app/hooks/useCostTransform";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
 const Item = ({ name, category, img, price, description }) => {
+  const { costTransform } = useCostTransform()
+  
   return (
     <article className="max-w-lg bg-white border border-gray-200 rounded-2xl shadow dark:bg-background-dark dark:border-gray-900">
       <div className="p-5">
@@ -26,7 +28,7 @@ const Item = ({ name, category, img, price, description }) => {
           {description}
         </p>
         <p className="mb-3 text-2xl md:text-3xl font-semibold text-ourpink-light dark:text-white">
-          {priceConverter(price)}
+          {costTransform(price)}
         </p>
         <PrimaryButton label={"Ver Detalle"} link={`/products/${category}`} />
       </div>

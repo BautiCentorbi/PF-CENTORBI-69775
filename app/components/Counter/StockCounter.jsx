@@ -1,8 +1,10 @@
+import { useCartContext } from '@/app/Context/CartContext'
 import React, {useState} from 'react'
 
 const StockCounter = ({stock, initialValue, onAdd, }) => {
   const [ count, setCount ] = useState(initialValue)
-  
+  const {addToCart} = useCartContext()
+
   const increment = () => {
     count < stock && setCount(count + 1)
   }

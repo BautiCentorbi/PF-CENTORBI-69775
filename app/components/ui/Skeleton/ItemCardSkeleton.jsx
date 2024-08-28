@@ -2,11 +2,11 @@ import React from 'react'
 
 const ItemCardSkeleton = () => {
     return (  
-      <div className="flex flex-col items-center">
+      <div className="animate-pulse flex flex-col items-center">
         <article className="max-w-xs bg-white border border-gray-200 rounded-2xl shadow dark:bg-background-dark dark:border-gray-900">
           <div className="p-5">
             <picture className="mb-8 flex justify-center">
-              <div className="h-36 w-36 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+              <div className="min-h-8 md:h-36 min-w-8 md:w-36 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
             </picture>
             <div>
               <h5 className="h-fit mb-2 text-2xl font-bold tracking-tight text-transparent bg-slate-300 dark:bg-slate-600 rounded-lg">

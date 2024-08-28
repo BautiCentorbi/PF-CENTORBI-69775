@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-// import { priceConverter } from '@/data/asyncMock'
-import PrimaryButton from '../Buttons/PrimaryButton'
 import StockCounter from '../../Counter/StockCounter'
+import useCostTransform from '@/app/hooks/useCostTransform'
+import { useCartContext } from '@/app/Context/CartContext'
 
-const ItemDetail = ({name,img,price,lgDescription,id, stock }) => {
+const ItemDetail = ({name, img, price,lgDescription, id, stock }) => {
     const [ cantidad, setCantidad ] = useState(0)
-    
+    const {costTransform} = useCostTransform()
+    const {addToCart} = useCartContext()
+
     const onAdd = (quantity) => {
         const item = {
             id,
@@ -16,7 +18,7 @@ const ItemDetail = ({name,img,price,lgDescription,id, stock }) => {
             img,
             stock
         }
-        addItem(item,quantity)
+        addToCart(item,quantity)
         setCantidad(quantity)
     }
 
@@ -26,8 +28,8 @@ const ItemDetail = ({name,img,price,lgDescription,id, stock }) => {
             <div className='pt-8 md:pl-16 flex justify-center items-center'>
                 <Image 
                   src={img}
-                  width={144}
-                  height={144}
+                  width={244}
+                  height={244}
                   style={{maxHeight:'644px',maxWidth:'644px'}}
                   alt={name}
                 />
@@ -37,7 +39,7 @@ const ItemDetail = ({name,img,price,lgDescription,id, stock }) => {
                     <h1 className="mb-2 text-2xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-ourpink-dark">{name}</h1>
                 </Link>
                 <p className='mb-3 text-gray-700 dark:text-gray-400'>{lgDescription}</p>
-                <p className='mb-3 text-3xl md:text-5xl font-semibold text-ourpink-light dark:text-white'>{price}</p>
+                <p className='mb-3 text-3xl md:text-5xl font-semibold text-ourpink-light dark:text-white'>{price !== undefined ? costTransform(price) : 'Precio no disponible'}</p>
                 <StockCounter stock={stock} initialValue={1} onAdd={onAdd}/>
             </div>
         </div>

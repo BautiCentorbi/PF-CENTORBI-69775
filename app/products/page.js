@@ -6,7 +6,6 @@ const getProducts = async() => {
     const productos = await data.json()
     return productos
 }
-
 const Productos = async() => {
     const products = await getProducts()
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import InfoSection from '../HomePage/InfoSection'
 import HeroSection from '../HomePage/HeroSection'
 // import Countdown from '../Countdown/Countdown'
@@ -15,8 +15,9 @@ const Main = () => {
       {/* <HeroSection /> */}
       <HeroSection />
       <div className='my-8 md:my-24 w-20 md:w-[720px] border-b-2 border-b-ourpink-dark/70'></div>
-      {/* <Countdown targetDate={targetDate}/> */}
-      <InfoSection className={'animate-fade-in animate-delay-300 my-8'}/>
+      <Suspense fallback={<HeroSection />}>
+        <InfoSection className={'animate-fade-in animate-delay-300 my-8'}/>
+      </Suspense>
     </div>
   )
 }

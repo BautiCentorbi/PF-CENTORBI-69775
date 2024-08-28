@@ -7,7 +7,7 @@ const getProducts = async() => {
     return productos
 }
 
-const Loading = async() => {
+const Loading = async(params) => {
     const productCount = await getProducts()
     return (
     <div className='flex flex-col items-center'>
