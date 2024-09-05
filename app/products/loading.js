@@ -12,7 +12,7 @@ const Loading = async(params) => {
     return (
     <div className='flex flex-col items-center'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-center align-center'>
-            {productCount.map((el, index) => (
+            {productCount?.map((el, index) => (
                 <div key={index}>
                     <ItemCardSkeleton />
                 </div>

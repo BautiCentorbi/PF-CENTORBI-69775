@@ -107,7 +107,7 @@ const NavigationMenu = () => {
               }`}
             >
               <Link className="uppercase" href={categoryPath}>
-                {category.replaceAll("-", " ")}
+                {category?.replaceAll("-", " ")}
               </Link>
             </li>
           );

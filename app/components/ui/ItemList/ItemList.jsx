@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from '../Item/Item';
 
-const ItemList = ({ productos} ) => {
+const ItemList = ({productos} ) => {
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 gap-8 justify-center align-center'>
       {productos.map((el, index) => (

@@ -46,7 +46,7 @@ const Cart = () => {
           {cart.map((prod) => {
             console.log(prod);
             return (
-              <div className="bg-background-transparent border-b-2 dark:border-0 dark:bg-background-dark rounded-lg grid grid-cols- md:grid-cols-4 h-fit items-center justify-items-center px-4 my-2 md:my-4">
+              <div key={prod.id} className="bg-background-transparent border-b-2 dark:border-0 dark:bg-background-dark rounded-lg grid grid-cols- md:grid-cols-4 h-fit items-center justify-items-center px-4 my-2 md:my-4">
                 <picture className="m-4">
                   <Image
                     src={prod.img}
